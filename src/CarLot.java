@@ -1,30 +1,60 @@
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.*;
+
+
 
 /**
  * Created by Ny Derry on 7/9/2017.
  */
 
-public class CarLot extends Car {
-    private double mileage;
+public class CarLot {
 
-    public CarLot(double mileage) {
-        this.mileage = mileage;
+
+
+
+       private List<Car> carLotList = new ArrayList<Car>();
+
+         public void displayALlCars(){
+
+        for (Car car : carLotList) {
+            System.out.println(car);
+        }
+
     }
 
-    public CarLot(String maker, String model, int year, double price, double mileage) {
-        //super getting from parent class, inheritance
-        super(maker, model, year, price);
-        this.mileage = mileage;
+
+    public void addCarToLot(Car car){
+        carLotList.add(car);
+
     }
 
-    public double getMileage() {return mileage; }
+    public void removeCarFromLot(Car car){
+        for(Car lotcar:carLotList){
+            if(lotcar.equals(car)){
+                carLotList.remove(lotcar);
+            }
 
-    public void setMileage(double mileage) {
-        this.mileage = mileage;
+        }
+
     }
 
-    //print out content of arrayList
-    public String toString(){
-        return super.toString() + "\t mileage "+mileage;
+    public Car findCarByLocation(int location){
+
+        return carLotList.get(location);
+
     }
+
+    public void replaceCar(Car car, int location){
+        carLotList.set(location, car);
+    }
+
+
+
+     private void addAllCars(List<Car> cars){
+        this.carLotList.addAll(cars);
+     }
+
+
 }
